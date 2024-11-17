@@ -24,17 +24,17 @@ body{
     color: var(--text-color);
 }
 .header{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     padding: 4rem 12% 4rem;
-    background: rgba(0,0,0,0.3);
-    backdrop-filter:blur(10px);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    z-index:5;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
 }
 .logo{
     font-size:  3rem;
@@ -49,8 +49,20 @@ body{
 .logo span{
     text-shadow:0 0 25px var(--main-color);
 }
+/* .time-display {
+    display: inline-block;
+    color: var(--main-color);
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin-top: 10px;
+} */
 .navbar a{
+    position: sticky;
     font-size: 1.8rem;
+    position:relative;
+    nav-right: right;
     color:var(--text-color);
     margin-left:4rem;
     font-weight:500;
@@ -398,6 +410,83 @@ span{
     font-size: 2.5rem;
     color: white;
 }
+/*Projects*/
+.projects{
+    padding: 100px 15px;
+    background: var(--second-bg-color);
+}
+.work-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+.work{
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.work img{
+    /* width: 640px; */
+    height:500px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.5s;
+}
+.layer{
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(rgba(0,0,0,0.6), var(--main-color));
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    font-size: 14px;
+}
+.layer h3{
+    font-weight: 500;
+    margin-bottom: 20px;
+    font-size: 40px;
+}
+.layer a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    background: transparent;
+    border: 2px solid var(--text-color);
+    font-size: 2.5rem;
+    border-radius: 50%;
+    color: var(--text-color);
+    margin: 3rem 1.5rem 3rem 0;
+    transition: 0.3s ease-in-out;
+}
+.layer a:hover{
+    color: var(--main-color);
+    transform: scale(1.3)translateY(-5px);
+    box-shadow: 0 0 25px var(--text-color);
+    background-color: var(--text-color);
+}
+.layer p{
+    font-size: 20px;
+}
+.work:hover img{
+    transform: scale(1.1);
+}
+.work:hover .layer{
+    height:100%;
+    transition: height 0.5s;
+}
 /*Contact*/
 .contact{
     background-color: var(--bg-color);
@@ -630,5 +719,45 @@ span{
 
     .skill p {
         font-size: 1.5rem;
+    }
+}
+/*Projects*/
+@media (max-width: 768px) {
+    .projects {
+        padding: 50px 15px;
+    }
+
+    .layer h3 {
+        font-size: 1.5rem;
+    }
+
+    .layer p {
+        font-size: 0.9rem;
+    }
+
+    .layer a {
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.5rem;
+    }
+
+    .work-list {
+        grid-gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .layer h3 {
+        font-size: 30px;
+    }
+
+    .layer p {
+        font-size: 15px;
+    }
+
+    .layer a {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.2rem;
     }
 }

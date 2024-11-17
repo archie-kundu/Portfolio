@@ -22,8 +22,39 @@ menuicon.onclick=()=>{
     navbar.classList.toggle('active');
 }
 
+// Select all social links
+const socialLinks = document.querySelectorAll(".social");
+
+// Apply hover effect with timeout
+socialLinks.forEach((link) => {
+    link.addEventListener("mouseenter", () => {
+        link.classList.add("hover-active"); // Add hover effect
+        setTimeout(() => {
+            link.classList.remove("hover-active"); // Remove hover effect after timeout
+        }, 1000); // Timeout duration in milliseconds
+    });
+
+    link.addEventListener("mouseleave", () => {
+        link.classList.remove("hover-active"); // Ensure hover effect is removed immediately on mouse leave
+    });
+});
+/*Clock*/
+// function updateClock() {
+//     const clockElement = document.getElementById("real-time-clock");
+//     const now = new Date();
+//     const hours = now.getHours().toString().padStart(2, '0');
+//     const minutes = now.getMinutes().toString().padStart(2, '0');
+//     const seconds = now.getSeconds().toString().padStart(2, '0');
+    
+//     clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+// }
+// // Update the clock every second
+// setInterval(updateClock, 1000);
+// // Initialize the clock on page load
+// updateClock();
+
+
 /*Contact*/
-// Check if EmailJS is loaded
 // Check if EmailJS is loaded
 if (typeof emailjs !== "undefined") {
     console.log("EmailJS library loaded successfully!");
