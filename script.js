@@ -38,6 +38,7 @@ socialLinks.forEach((link) => {
         link.classList.remove("hover-active"); // Ensure hover effect is removed immediately on mouse leave
     });
 });
+<<<<<<< HEAD
 /*Clock*/
 // function updateClock() {
 //     const clockElement = document.getElementById("real-time-clock");
@@ -53,6 +54,8 @@ socialLinks.forEach((link) => {
 // // Initialize the clock on page load
 // updateClock();
 
+=======
+>>>>>>> cc11e7f4004f4520f64e80c5c5f7797a50829332
 
 /*Contact*/
 // Check if EmailJS is loaded
