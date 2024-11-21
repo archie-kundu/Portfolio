@@ -38,7 +38,6 @@ socialLinks.forEach((link) => {
         link.classList.remove("hover-active"); // Ensure hover effect is removed immediately on mouse leave
     });
 });
-<<<<<<< HEAD
 /*Clock*/
 // function updateClock() {
 //     const clockElement = document.getElementById("real-time-clock");
@@ -54,10 +53,12 @@ socialLinks.forEach((link) => {
 // // Initialize the clock on page load
 // updateClock();
 
-=======
->>>>>>> cc11e7f4004f4520f64e80c5c5f7797a50829332
 
 /*Contact*/
+// Check if EmailJS is loaded
+// Initialize EmailJS
+emailjs.init("kDLRNLvOKtrXs5RrR"); // Replace with your actual EmailJS User ID
+
 // Check if EmailJS is loaded
 if (typeof emailjs !== "undefined") {
     console.log("EmailJS library loaded successfully!");
@@ -65,8 +66,9 @@ if (typeof emailjs !== "undefined") {
     console.error("EmailJS library failed to load!");
 }
 
+// Add event listener to the form
 document.querySelector("form").addEventListener("submit", function (e) {
-    e.preventDefault(); // Prevent form from refreshing the page
+    e.preventDefault(); // Prevent form submission from refreshing the page
 
     // Collect form data
     const fullName = document.getElementById("fullname").value.trim();
@@ -75,9 +77,16 @@ document.querySelector("form").addEventListener("submit", function (e) {
     const subject = document.getElementById("subject").value.trim();
     const message = document.getElementById("message").value.trim();
 
-    // Check for empty fields
+    // Validate required fields
     if (!fullName || !email || !message) {
-        alert("Please fill in all required fields.");
+        alert("Please fill in all required fields (Name, Email, Message).");
+        return;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert("Please enter a valid email address.");
         return;
     }
 
@@ -85,8 +94,8 @@ document.querySelector("form").addEventListener("submit", function (e) {
     const templateParams = {
         fullname: fullName,
         email: email,
-        phone: phone,
-        subject: subject,
+        phone: phone || "Not provided", // Provide default value if phone is optional
+        subject: subject || "No subject", // Provide default value if subject is optional
         message: message,
     };
 
@@ -96,8 +105,10 @@ document.querySelector("form").addEventListener("submit", function (e) {
         .then((response) => {
             console.log("Email sent successfully!", response.status, response.text);
             alert("Message sent successfully!");
-            // Optionally reset the form
-            document.querySelector("form").reset();
+
+            // Optionally reset the form after successful submission
+            const form = document.querySelector("form");
+            if (form) form.reset();
         })
         .catch((error) => {
             console.error("Error sending email:", error);
